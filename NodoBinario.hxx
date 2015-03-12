@@ -61,8 +61,11 @@ void NodoBinario<T>::setDerecha(NodoBinario<T>* nderecha)
 template < class T >
 bool NodoBinario<T>::buscar(T& n)
 {
+    //cout<<n<<" "<<dato<<endl; //verificar los datos que recibe la funcion
     if(dato == n)
+    {
         return true;
+    }
     else
     {
         bool res = false;
@@ -70,11 +73,18 @@ bool NodoBinario<T>::buscar(T& n)
         {
             res = izq->buscar(n);
             if(res)
+            {
                 return res;
+            }
         }
         if(der != NULL)
+        {
             res = der->buscar(n);
-
+            if(res)
+            {
+                return res;
+            }
+        }
         return res;
     }
 }
@@ -82,73 +92,80 @@ bool NodoBinario<T>::buscar(T& n)
 template <class T>
 bool NodoBinario<T>::insertarNodo(T _padre , T _dato)
 {
-  if(_padre == dato)
-  {
-    if(izq == NULL)
+    if(_padre == dato)
     {
-      izq = new NodoBinario<T>(dato);
-      return true;
-    }
-    else
-      return false;
-  }
-  else
-  {
-    if(izq == NULL)
-      return false;
-    else
-    {
-      bool res = izq->insertarNodo(_padre,_dato);
-      if(!res)
-      {
-        if(der == NULL)
-          return false;
+        if(izq == NULL)
+        {
+            izq = new NodoBinario<T>(_dato);
+            return true;
+        }
         else
-          return der->insertarNodo(_padre,_dato);
-      }
-      return res;
+{
+            if(der == NULL)
+            {
+                der = new NodoBinario<T>(_dato);
+                return true;
+            }
+        }
+            return false;
     }
+    else
+    {
+        if(izq == NULL)
+            return false;
+        else
+        {
+            bool res = izq->insertarNodo(_padre,_dato);
+            if(!res)
+            {
+                if(der == NULL)
+                    return false;
+                else
+                    return der->insertarNodo(_padre,_dato);
+            }
+            return res;
+        }
 
-  }
+    }
 }
 
 template <class T>
 bool NodoBinario<T>::eliminar(T _dato)
 {
-  if(izq != NULL)
-  {
-     if(izq->getDato() == _dato)
-     {
-       if(izq->getIzquierda() != NULL && izq->getDerecha() == NULL)
-       		izq = izq->getIzquierda();
-       else if(izq->getIzquierda() == NULL && izq->getDerecha() != NULL)
-         	izq = izq->getDerecha();
-       else if(izq->getIzquierda() != NULL && izq->getDerecha() != NULL)
-         	return false;
-       else if(izq->getIzquierda() == NULL && izq->getDerecha() == NULL)
-         	izq = NULL;
-       return true;
-     }
-     else
-       return izq->eliminar(dato);
-  }
-  else if(der != NULL)
-  {
-    if(der->getDato() == _dato)
-     {
-       if(der->getIzquierda() != NULL && der->getDerecha() == NULL)
-       		der = der->getIzquierda();
-       else if(der->getIzquierda() == NULL && der->getDerecha() != NULL)
-         	der = der->getDerecha();
-       else if(der->getIzquierda() != NULL && der->getDerecha() != NULL)
-         	return false;
-       else if(der->getIzquierda() == NULL && der->getDerecha() == NULL)
-         	der = NULL;
-       return true;
-     }
-     else
-       return der->eliminar(dato);
-  }
+    if(izq != NULL)
+    {
+        if(izq->getDato() == _dato)
+        {
+            if(izq->getIzquierda() != NULL && izq->getDerecha() == NULL)
+                izq = izq->getIzquierda();
+            else if(izq->getIzquierda() == NULL && izq->getDerecha() != NULL)
+                izq = izq->getDerecha();
+            else if(izq->getIzquierda() != NULL && izq->getDerecha() != NULL)
+                return false;
+            else if(izq->getIzquierda() == NULL && izq->getDerecha() == NULL)
+                izq = NULL;
+            return true;
+        }
+        else
+            return izq->eliminar(dato);
+    }
+    else if(der != NULL)
+    {
+        if(der->getDato() == _dato)
+        {
+            if(der->getIzquierda() != NULL && der->getDerecha() == NULL)
+                der = der->getIzquierda();
+            else if(der->getIzquierda() == NULL && der->getDerecha() != NULL)
+                der = der->getDerecha();
+            else if(der->getIzquierda() != NULL && der->getDerecha() != NULL)
+                return false;
+            else if(der->getIzquierda() == NULL && der->getDerecha() == NULL)
+                der = NULL;
+            return true;
+        }
+        else
+            return der->eliminar(dato);
+    }
 
 
 }

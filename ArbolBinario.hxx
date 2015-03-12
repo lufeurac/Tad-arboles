@@ -32,6 +32,7 @@ NodoBinario<T>* ArbolBinario<T>::obtenerRaiz()
 {
     return raiz;
 }
+
 template <class T>
 void ArbolBinario<T>::fijarRaiz(NodoBinario<T>* nraiz)
 {
@@ -47,19 +48,8 @@ bool ArbolBinario<T>::insertar(T padre, T n)
     {
         if(buscar(padre))
         {
-          	string direccion;
-            cout << "Ingrese ( izq ) o ( der ) si quiere eliminar izquierda o derecha" << endl;
-  			cin >> direccion;
-            if(direccion == "izq")
-			{
-    			return raiz->insertarIzquierda(padre,n);
-  			}
-  			else
-  			{
-     			return raiz->insertarDerecha(padre,n);
-  			}
+            return raiz->insertarNodo(padre,n);
         }
-
     }
 }
 
@@ -79,10 +69,9 @@ bool ArbolBinario<T>::eliminar(T n)
   {
      return raiz->eliminarDerecha(n);
   }
-  
-  
-}
 
+
+}
 
 template <class T>
 bool ArbolBinario<T>::buscar(T& n)
@@ -140,17 +129,16 @@ void ArbolBinario<T>::inOrden(NodoBinario<T>* inicio)
     else
     {
         inOrden(inicio->getIzquierda());
-        cout << inicio->getDato() << endl;
+        cout << inicio->getDato();
         inOrden(inicio->getDerecha());
     }
 }
-
 template <class T>
 void ArbolBinario<T>::preOrden(NodoBinario<T>* inicio)
 {
     if(inicio != NULL)
     {
-        cout << inicio->getDato() << endl;
+        cout << inicio->getDato();
         preOrden(inicio->getIzquierda());
         preOrden(inicio->getDerecha());
     }
@@ -164,10 +152,9 @@ void ArbolBinario<T>::posOrden(NodoBinario<T>* inicio)
     {
         posOrden(inicio->getIzquierda());
         posOrden(inicio->getDerecha());
-        cout << inicio->getDato() << endl;
+        cout << inicio->getDato();
     }
 }
-
 template <class T>
 void ArbolBinario<T>::nivelOrden(NodoBinario<T>* inicio)
 {
@@ -175,7 +162,7 @@ void ArbolBinario<T>::nivelOrden(NodoBinario<T>* inicio)
     cola.push(inicio);
     while(!cola.empty())
     {
-        cout << cola.front()->getDato() << endl;
+        cout << cola.front()->getDato();
         if(cola.front()->getIzquierda() != NULL)
             cola.push(cola.front()->getIzquierda());
         if(cola.front()->getDerecha() != NULL)
