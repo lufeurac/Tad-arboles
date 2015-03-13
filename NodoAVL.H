@@ -9,26 +9,26 @@ template< class T >
 class NodoAVL
 {
 protected:
-    T dato;
+    int alt;
     NodoAVL<T>*  der;
     NodoAVL<T>*  izq;
+    T dato;
 public:
+    bool buscar(T& n);
+    bool eliminarNodo(T _dato);
+    bool insertarNodo(T _dato);
+    int getAltura();
     NodoAVL();
     NodoAVL(T& _dato);
+    NodoAVL(T& _dato, int nalt);
+    NodoAVL<T>* getDerecha();
+    NodoAVL<T>* getIzquierda();
     ~NodoAVL();
     T getDato();
+    void setAltura(int val);
     void setDato(T& val);
-    bool buscar(T& n);
-    NodoAVL<T>* getIzquierda();
-    void setIzquierda(NodoAVL<T>* nizquierda);
-    NodoAVL<T>* getDerecha();
     void setDerecha(NodoAVL<T>* nderecha);
-    bool agregarNodoIzquierda(T dato);
-    bool agregarNodoDerecha(T dato);
-    bool eliminarNodoIzquierda(T _dato);
-    void eliminarHijosIzquierda();
-    void eliminarHijosDerecha();
-    bool eliminarNodoDerecha(T dato);
+    void setIzquierda(NodoAVL<T>* nizquierda);
 };
 
 #include "NodoAVL.hxx"
