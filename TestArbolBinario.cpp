@@ -56,6 +56,28 @@ int main()
     cout << "El arbol ordenado por nivel-orden es el siguiente: ";
     arbol.nivelOrden(arbol.obtenerRaiz());
     cout << endl;
+
+    if(arbol.eliminar(6))
+        cout << "Se elimino correctamente" << endl;
+
+    if(arbol.eliminar(7))
+        cout << "Se elimino correctamente" << endl;
+
+    if(arbol.eliminar(3))
+        cout << "Se elimino correctamente" << endl;
+
+    if(arbol.eliminar(4))
+        cout << "Se elimino correctamente" << endl;
+
+    if(arbol.eliminar(2))
+        cout << "Se elimino correctamente" << endl;
+
+    if(arbol.eliminar(5))
+        cout << "Se elimino correctamente" << endl;
+
+    cout << "El arbol ordenado por nivel-orden es el siguiente: ";
+    arbol.nivelOrden(arbol.obtenerRaiz());
+    cout << endl;
     return 0;
 }
 

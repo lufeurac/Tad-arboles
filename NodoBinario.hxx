@@ -3,8 +3,6 @@
 #ifndef NODOBINARIO_HXX_INCLUDED
 #define NODOBINARIO_HXX_INCLUDED
 
-#include <algorithm>
-
 template <class T>
 NodoBinario<T>::NodoBinario()
 {
@@ -160,9 +158,11 @@ bool NodoBinario<T>::eliminar(T _dato)
             return true;
         }
         else
-            return izq->eliminar(dato);
+        {
+            bool res = izq->eliminar(_dato);
+        }
     }
-    else if(der != NULL)
+    if(der != NULL)
     {
         if(der->getDato() == _dato)
         {
@@ -177,7 +177,9 @@ bool NodoBinario<T>::eliminar(T _dato)
             return true;
         }
         else
-            return der->eliminar(dato);
+            return der->eliminar(_dato);
     }
+    else
+        return false;
 }
 #endif // NODOBINARIO_HXX_INCLUDED

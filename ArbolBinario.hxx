@@ -77,18 +77,16 @@ bool ArbolBinario<T>::eliminar(T n)
   string direccion;
   if(raiz == NULL)
     return false;
-  cout << "Ingrese ( izq ) o ( der ) si quiere eliminar izquierda o derecha" << endl;
-  cin >> direccion;
-  if(direccion == "izq")
-  {
-    return raiz->eliminarIzquierda(n);
-  }
-  else
+  /*cout << "Ingrese ( izq ) o ( der ) si quiere eliminar izquierda o derecha" << endl;
+  cin >> direccion;*/
+  /*if(direccion == "izq")
+  {*/
+    return raiz->eliminar(n);
+  //}
+  /*else
   {
      return raiz->eliminarDerecha(n);
-  }
-
-
+  }*/
 }
 
 
