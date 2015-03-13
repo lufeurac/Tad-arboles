@@ -13,18 +13,18 @@ protected:
     NodoBinario<T>*  der;
     NodoBinario<T>*  izq;
 public:
+    bool buscar(T& n);
+    bool eliminar(T _dato);
+    bool insertarNodo(T _padre, T _dato);
     NodoBinario();
     NodoBinario(T& _dato);
+    NodoBinario<T>* getDerecha();
+    NodoBinario<T>* getIzquierda();
     ~NodoBinario();
     T getDato();
     void setDato(T& val);
-    NodoBinario<T>* getIzquierda();
-    void setIzquierda(NodoBinario<T>* nizquierda);
-    NodoBinario<T>* getDerecha();
     void setDerecha(NodoBinario<T>* nderecha);
-    bool buscar(T& n);
-    bool insertarNodo(T _padre, T _dato);
-    bool eliminar(T _dato);
+    void setIzquierda(NodoBinario<T>* nizquierda);
 };
 
 #include "NodoBinario.hxx"

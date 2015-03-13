@@ -18,18 +18,19 @@ class ArbolBinarioOrd
         NodoBinarioOrd<T>* obtenerRaiz();
         void fijarRaiz(NodoBinarioOrd<T>* nraiz);
         bool buscar(T& n);
-        bool insertar(T padre, T n);
+        bool insertar(T _dato);
         bool eliminar(T n);
         int altura();
         int alturaM(NodoBinarioOrd<T>* inicio);
         int tamano(NodoBinarioOrd<T>* inicio);
+        T obtenerDatoRaiz();
         void inOrden(NodoBinarioOrd<T>* inicio);
         void preOrden(NodoBinarioOrd<T>* inicio);
         void posOrden(NodoBinarioOrd<T>* inicio);
         void nivelOrden(NodoBinarioOrd<T>* inicio);
 };
 
-#include "ArbolBinario.hxx"
+#include "ArbolBinarioOrd.hxx"
 
 #endif // ARBOLBINARIO_H_INCLUDED
 

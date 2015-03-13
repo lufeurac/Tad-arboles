@@ -18,27 +18,35 @@ NodoBinario<T>::NodoBinario(T& _dato)
     izq = NULL;
     der = NULL;
 }
+
+
 template <class T>
 NodoBinario<T>::~NodoBinario()
 {
 
 }
 
+
 template <class T>
 T NodoBinario<T>::getDato()
 {
     return dato;
 }
+
+
 template <class T>
 void NodoBinario<T>::setDato(T& val)
 {
     dato = val;
 }
+
+
 template <class T>
 NodoBinario<T>* NodoBinario<T>::getIzquierda()
 {
     return izq;
 }
+
 
 template <class T>
 void NodoBinario<T>::setIzquierda(NodoBinario<T>* nizquierda)
@@ -46,17 +54,20 @@ void NodoBinario<T>::setIzquierda(NodoBinario<T>* nizquierda)
     izq = nizquierda;
 }
 
+
 template <class T>
 NodoBinario<T>* NodoBinario<T>::getDerecha()
 {
     return der;
 }
 
+
 template <class T>
 void NodoBinario<T>::setDerecha(NodoBinario<T>* nderecha)
 {
     der = nderecha;
 }
+
 
 template < class T >
 bool NodoBinario<T>::buscar(T& n)
@@ -88,6 +99,7 @@ bool NodoBinario<T>::buscar(T& n)
         return res;
     }
 }
+
 
 template <class T>
 bool NodoBinario<T>::insertarNodo(T _padre , T _dato)
@@ -129,6 +141,7 @@ bool NodoBinario<T>::insertarNodo(T _padre , T _dato)
     }
 }
 
+
 template <class T>
 bool NodoBinario<T>::eliminar(T _dato)
 {
@@ -166,7 +179,5 @@ bool NodoBinario<T>::eliminar(T _dato)
         else
             return der->eliminar(dato);
     }
-
-
 }
 #endif // NODOBINARIO_HXX_INCLUDED

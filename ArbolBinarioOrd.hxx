@@ -38,22 +38,19 @@ void ArbolBinarioOrd<T>::fijarRaiz(NodoBinarioOrd<T>* nraiz)
     raiz = nraiz;
 }
 
-template<class T>
-bool ArbolBinarioOrd<T>::insertar(T padre, T n)
+template <class T>
+T ArbolBinarioOrd<T>::obtenerDatoRaiz()
 {
-    if(raiz == NULL)
-        return false;
+    return raiz->getDato();
+}
+
+template<class T>
+bool ArbolBinarioOrd<T>::insertar(T _dato)
+{
+    if(raiz->insertarNodo(_dato))
+        return true;
     else
-    {
-        if(buscar(padre) && padre < n)
-        {
-            raiz->setDerecha(padre);
-        }
-        if(buscar(padre) && padre > n)
-        {
-            raiz->setIzquierda(padre);
-        }
-    }
+        return false;
 }
 
 template <class T>
@@ -79,13 +76,13 @@ bool ArbolBinarioOrd<T>::buscar(T& n)
 }
 
 template <class T>
-int ArbolBinario<T>::altura()
+int ArbolBinarioOrd<T>::altura()
 {
     return alturaM(raiz) - 1;
 }
 
 template <class T>
-int ArbolBinario<T>::alturaM(NodoBinario<T>* nodo)
+int ArbolBinarioOrd<T>::alturaM(NodoBinarioOrd<T>* nodo)
 {
     if (nodo == NULL)
     {
@@ -101,8 +98,8 @@ int ArbolBinario<T>::alturaM(NodoBinario<T>* nodo)
         return 1 + der;
 }
 
-template <class T>
-int ArbolBinario<T>::tamano(NodoBinario<T>* inicio)
+/*template <class T>
+int ArbolBinarioOrd<T>::tamano(NodoBinarioOrd<T>* inicio)
 {
     int cont = 0;
     if(inicio == NULL)
@@ -114,33 +111,33 @@ int ArbolBinario<T>::tamano(NodoBinario<T>* inicio)
         cont++;
         return cont + tamano(inicio->getIzquierda()) + tamano(inicio->getDerecha());
     }
-}
+}*/
 
 template <class T>
-void ArbolBinario<T>::inOrden(NodoBinario<T>* inicio)
+void ArbolBinarioOrd<T>::inOrden(NodoBinarioOrd<T>* inicio)
 {
     if(inicio == NULL)
         return;
     else
     {
         inOrden(inicio->getIzquierda());
-        cout << inicio->getDato() << endl;
+        cout << inicio->getDato() << " ";
         inOrden(inicio->getDerecha());
     }
 }
 
 template <class T>
-void ArbolBinario<T>::preOrden(NodoBinario<T>* inicio)
+void ArbolBinarioOrd<T>::preOrden(NodoBinarioOrd<T>* inicio)
 {
     if(inicio != NULL)
     {
-        cout << inicio->getDato() << endl;
+        cout << inicio->getDato() << " ";
         preOrden(inicio->getIzquierda());
         preOrden(inicio->getDerecha());
     }
 }
 template <class T>
-void ArbolBinario<T>::posOrden(NodoBinario<T>* inicio)
+void ArbolBinarioOrd<T>::posOrden(NodoBinarioOrd<T>* inicio)
 {
     if(inicio == NULL)
         return;
@@ -148,18 +145,18 @@ void ArbolBinario<T>::posOrden(NodoBinario<T>* inicio)
     {
         posOrden(inicio->getIzquierda());
         posOrden(inicio->getDerecha());
-        cout << inicio->getDato() << endl;
+        cout << inicio->getDato() << " ";
     }
 }
 
 template <class T>
-void ArbolBinario<T>::nivelOrden(NodoBinario<T>* inicio)
+void ArbolBinarioOrd<T>::nivelOrden(NodoBinarioOrd<T>* inicio)
 {
-    queue< NodoBinario<T>* > cola;
+    queue< NodoBinarioOrd<T>* > cola;
     cola.push(inicio);
     while(!cola.empty())
     {
-        cout << cola.front()->getDato() << endl;
+        cout << cola.front()->getDato() << " ";
         if(cola.front()->getIzquierda() != NULL)
             cola.push(cola.front()->getIzquierda());
         if(cola.front()->getDerecha() != NULL)

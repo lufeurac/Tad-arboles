@@ -8,25 +8,26 @@
 template <class T>
 class ArbolBinario
 {
-    protected:
-        NodoBinario<T>* raiz;
-    public:
-        ArbolBinario();
-        ArbolBinario(T val);
-        ~ArbolBinario();
-        bool esVacio();
-        NodoBinario<T>* obtenerRaiz();
-        void fijarRaiz(NodoBinario<T>* nraiz);
-        bool buscar(T& n);
-        bool insertar(T padre, T n);
-        bool eliminar(T n);
-        int altura();
-        int alturaM(NodoBinario<T>* inicio);
-        int tamano(NodoBinario<T>* inicio);
-        void inOrden(NodoBinario<T>* inicio);
-        void preOrden(NodoBinario<T>* inicio);
-        void posOrden(NodoBinario<T>* inicio);
-        void nivelOrden(NodoBinario<T>* inicio);
+protected:
+    NodoBinario<T>* raiz;
+public:
+    ArbolBinario();
+    ArbolBinario(T val);
+    ~ArbolBinario();
+    bool buscar(T& n);
+    bool eliminar(T n);
+    bool esVacio();
+    bool insertar(T padre, T n);
+    int altura();
+    int alturaM(NodoBinario<T>* inicio);
+    int tamano(NodoBinario<T>* inicio);
+    NodoBinario<T>* obtenerRaiz();
+    void fijarRaiz(NodoBinario<T>* nraiz);
+    void inOrden(NodoBinario<T>* inicio);
+    void nivelOrden(NodoBinario<T>* inicio);
+    void preOrden(NodoBinario<T>* inicio);
+    void posOrden(NodoBinario<T>* inicio);
+    T obtenerDatoRaiz();
 };
 
 #include "ArbolBinario.hxx"

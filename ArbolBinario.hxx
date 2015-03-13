@@ -10,16 +10,22 @@ ArbolBinario<T>::ArbolBinario()
 {
 
 }
+
+
 template <class T>
 ArbolBinario<T>::ArbolBinario(T val)
 {
     raiz = new NodoBinario<T>(val);
 }
+
+
 template <class T>
 ArbolBinario<T>::~ArbolBinario()
 {
 
 }
+
+
 template <class T>
 bool ArbolBinario<T>::esVacio()
 {
@@ -27,17 +33,28 @@ bool ArbolBinario<T>::esVacio()
         return true;
     return false;
 }
+
+
 template <class T>
 NodoBinario<T>* ArbolBinario<T>::obtenerRaiz()
 {
     return raiz;
 }
 
+
+template <class T>
+T ArbolBinario<T>::obtenerDatoRaiz()
+{
+    return raiz->getDato();
+}
+
+
 template <class T>
 void ArbolBinario<T>::fijarRaiz(NodoBinario<T>* nraiz)
 {
     raiz = nraiz;
 }
+
 
 template<class T>
 bool ArbolBinario<T>::insertar(T padre, T n)
@@ -52,6 +69,7 @@ bool ArbolBinario<T>::insertar(T padre, T n)
         }
     }
 }
+
 
 template <class T>
 bool ArbolBinario<T>::eliminar(T n)
@@ -73,6 +91,7 @@ bool ArbolBinario<T>::eliminar(T n)
 
 }
 
+
 template <class T>
 bool ArbolBinario<T>::buscar(T& n)
 {
@@ -83,11 +102,13 @@ bool ArbolBinario<T>::buscar(T& n)
 
 }
 
+
 template <class T>
 int ArbolBinario<T>::altura()
 {
     return alturaM(raiz) - 1;
 }
+
 
 template <class T>
 int ArbolBinario<T>::alturaM(NodoBinario<T>* nodo)
@@ -106,6 +127,7 @@ int ArbolBinario<T>::alturaM(NodoBinario<T>* nodo)
         return 1 + der;
 }
 
+
 template <class T>
 int ArbolBinario<T>::tamano(NodoBinario<T>* inicio)
 {
@@ -121,6 +143,7 @@ int ArbolBinario<T>::tamano(NodoBinario<T>* inicio)
     }
 }
 
+
 template <class T>
 void ArbolBinario<T>::inOrden(NodoBinario<T>* inicio)
 {
@@ -133,6 +156,8 @@ void ArbolBinario<T>::inOrden(NodoBinario<T>* inicio)
         inOrden(inicio->getDerecha());
     }
 }
+
+
 template <class T>
 void ArbolBinario<T>::preOrden(NodoBinario<T>* inicio)
 {
@@ -143,6 +168,8 @@ void ArbolBinario<T>::preOrden(NodoBinario<T>* inicio)
         preOrden(inicio->getDerecha());
     }
 }
+
+
 template <class T>
 void ArbolBinario<T>::posOrden(NodoBinario<T>* inicio)
 {
@@ -155,6 +182,8 @@ void ArbolBinario<T>::posOrden(NodoBinario<T>* inicio)
         cout << inicio->getDato();
     }
 }
+
+
 template <class T>
 void ArbolBinario<T>::nivelOrden(NodoBinario<T>* inicio)
 {

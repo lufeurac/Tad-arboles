@@ -5,11 +5,13 @@
 
 #include <algorithm>
 
+
 template <class T>
 NodoBinarioOrd<T>::NodoBinarioOrd()
 {
 
 }
+
 
 template <class T>
 NodoBinarioOrd<T>::NodoBinarioOrd(T& _dato)
@@ -18,32 +20,25 @@ NodoBinarioOrd<T>::NodoBinarioOrd(T& _dato)
     izq = NULL;
     der = NULL;
 }
+
+
 template <class T>
 NodoBinarioOrd<T>::~NodoBinarioOrd()
 {
 
 }
 
+
 template <class T>
 T NodoBinarioOrd<T>::getDato()
 {
     return dato;
 }
+
 template <class T>
 void NodoBinarioOrd<T>::setDato(T& val)
 {
     dato = val;
-}
-template <class T>
-NodoBinarioOrd<T>* NodoBinarioOrd<T>::getIzquierda()
-{
-    return izq;
-}
-
-template <class T>
-void NodoBinarioOrd<T>::setIzquierda(NodoBinarioOrd<T>* nizquierda)
-{
-    izq = nizquierda;
 }
 
 template <class T>
@@ -53,10 +48,23 @@ NodoBinarioOrd<T>* NodoBinarioOrd<T>::getDerecha()
 }
 
 template <class T>
+NodoBinarioOrd<T>* NodoBinarioOrd<T>::getIzquierda()
+{
+    return izq;
+}
+
+template <class T>
 void NodoBinarioOrd<T>::setDerecha(NodoBinarioOrd<T>* nderecha)
 {
     der = nderecha;
 }
+
+template <class T>
+void NodoBinarioOrd<T>::setIzquierda(NodoBinarioOrd<T>* nizquierda)
+{
+    izq = nizquierda;
+}
+
 
 template < class T >
 bool NodoBinarioOrd<T>::buscar(T& n)
@@ -66,112 +74,123 @@ bool NodoBinarioOrd<T>::buscar(T& n)
     else
     {
         bool res = false;
-        if(izq != NULL)
+        if(dato < n)
         {
-            res = izq->buscar(n);
-            if(res)
-                return res;
+            if(izq != NULL)
+            {
+                res = izq->buscar(n);
+                if(res)
+                {
+                    return res;
+                }
+            }
+            return res;
         }
-        if(der != NULL)
-            res = der->buscar(n);
-
+        else
+        {
+            if(der != NULL)
+            {
+                res = der->buscar(n);
+                if(res)
+                {
+                    return res;
+                }
+            }
+            return res;
+        }
         return res;
     }
 }
 
-template <class T>
-bool NodoBinarioOrd<T>::insertarNodoIzquierda(T _padre , T _dato)
-{
-  if(_padre == dato)
-  {
-    if(izq == NULL)
-    {
-      izq = new NodoBinarioOrd<T>(dato);
-      return true;
-    }
-    else
-      return false;
-  }
-  else
-  {
-    if(izq == NULL)
-      return false;
-    else
-      izq->insertarNodoIzquierda(padre,dato);
-  }
-}
 
 template <class T>
-bool NodoBinarioOrd<T>::eliminarNodoIzquierda(T _dato)
+bool NodoBinarioOrd<T>::insertarNodo(T _dato)
+{
+    if((izq != NULL)&&(der != NULL))
+    {
+        if(dato == _dato)
+        {
+            return false;
+        }
+        else
+        {
+            if(_dato > dato)
+            {
+                bool res = der->insertarNodo(_dato);
+                return res;
+            }
+            else
+            {
+                bool res =izq->insertarNodo(_dato);
+                return res;
+            }
+        }
+    }
+    else
+    {
+        if((_dato < dato)&&(izq != NULL))
+        {
+            bool res = izq->insertarNodo(_dato);
+            return res;
+        }
+        if((_dato > dato)&&(der != NULL))
+        {
+            bool res = der->insertarNodo(_dato);
+            return res;
+        }
+        if((_dato < dato)&&(izq == NULL))
+        {
+            izq = new NodoBinarioOrd<T>(_dato);
+            return true;
+        }
+        if((_dato > dato)&&(der == NULL))
+        {
+            der = new NodoBinarioOrd<T>(_dato);
+            return true;
+        }
+    }
+}
+
+
+template <class T>
+bool NodoBinarioOrd<T>::eliminarNodo(T _dato)
 {
     if(dato == _dato)
     {
-        eliminarHijosIzquierda();
-        eliminarHijosDerecha();
-        izq = NULL;
-        der = NULL;
-        return true;
-    }
-    else
-    {
-        bool res = false;
-        res = izq->eliminarNodoIzquierda(_dato);
-        return res;
+        if((izq != NULL)&&(der != NULL))
+        {
+            if(der->getIzquierda() == NULL)
+            {
+                der->setIzquierda(izq);
+                this = der;
+                return true;
+            }
+            else
+            {
+                //TO DO: recursion mover el arbol
+            }
+        }
+        else
+        {
+            if((izq != NULL)&&(der == NULL))
+            {
+                this = izq;
+                return true;
+            }
+            if((izq == NULL)&&(der != NULL))
+            {
+                this = der;
+                return true;
+            }
+        }
+        if((izq == NULL)&&(der == NULL))
+        {
+            delete this;
+            return true;
+        }
     }
 }
 
-template <class T>
-bool NodoBinarioOrd<T>::eliminarNodoDerecha(T _dato)
-{
-    if(dato == _dato)
-    {
-        eliminarHijosIzquierda();
-        eliminarHijosDerecha();
-        izq = NULL;
-        der = NULL;
-        return true;
-    }
-    else
-    {
-        bool res = false;
-        res = der->eliminarNodoDerecha(_dato);
-        return res;
-    }
-}
-
-template <class T>
-void NodoBinarioOrd<T>::eliminarHijosIzquierda()
-{
-    if(izq->getIzquierda() == NULL)
-    {
-        izq = NULL;
-    }
-    else
-        izq->eliminarHijosIzquierda();
-}
-
-template <class T>
-void NodoBinarioOrd<T>::eliminarHijosDerecha()
-{
-    if(der->getDerecha() == NULL)
-    {
-        delete der;
-    }
-    else
-        der->eliminarHijosDerecha();
-}
-
-template <class T>
-bool NodoBinarioOrd<T>::agregarNodoDerecha(T dato)
-{
-    if(der == NULL)
-    {
-        der = new NodoBinarioOrd<T>(dato);
-        return true;
-    }
-    else
-        return false;
-}
 
 #endif // NODOBINARIOORD_HXX_INCLUDED
 

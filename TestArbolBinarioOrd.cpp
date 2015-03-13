@@ -1,5 +1,5 @@
 #include<iostream>
-#include "ArbolBinario.h"
+#include "ArbolBinarioOrd.h"
 using namespace std;
 
 void pereza()
@@ -9,41 +9,41 @@ void pereza()
 
 int main()
 {
-    ArbolBinario<int> arbol(1);
-    if(arbol.insertar(1,2))
+    ArbolBinarioOrd<int> arbol(10);
+    if(arbol.insertar(4))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(2,3))
+    if(arbol.insertar(7))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(3,4))
+    if(arbol.insertar(3))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(2,5))
+    if(arbol.insertar(2))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(1,6))
+    if(arbol.insertar(5))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(3,7))
+    if(arbol.insertar(11))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
     pereza();
-    cout << "Raiz del arbol: " << arbol.obtenerDatoRaiz() << endl;
+/*   cout << "Raiz del arbol: " << arbol.obtenerDatoRaiz() << endl;
     cout << "La altura del arbol es: " << arbol.altura() << endl;
-    cout << "El tamanio del arbol es: " << arbol.tamano(arbol.obtenerRaiz()) << endl;
+    cout << "El tamanio del arbol es: " << arbol.tamano(arbol.obtenerRaiz()) << endl;*/
     cout << "El arbol ordenado por pre-orden es el siguiente: ";
     arbol.preOrden(arbol.obtenerRaiz());
     cout << endl;
