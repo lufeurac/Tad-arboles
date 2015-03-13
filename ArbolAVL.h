@@ -3,7 +3,7 @@
 
 #include "NodoAVL.h"
 
-template <class T>
+template < class T >
 class ArbolAVL
 {
     protected:
