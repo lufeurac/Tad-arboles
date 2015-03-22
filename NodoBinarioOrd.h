@@ -16,6 +16,7 @@ public:
     bool buscar(T& n);
     bool eliminarNodo(T _dato);
     bool insertarNodo(T _dato);
+    bool rotaciones(NodoBinarioOrd<T>* dato, NodoBinarioOrd<T>* nod);
     NodoBinarioOrd();
     NodoBinarioOrd(T& _dato);
     NodoBinarioOrd<T>* getDerecha();
@@ -23,6 +24,7 @@ public:
     ~NodoBinarioOrd();
     T getDato();
     void setDato(T& val);
+    void setIt(NodoBinarioOrd<T>* n);
     void setDerecha(NodoBinarioOrd<T>* nderecha);
     void setIzquierda(NodoBinarioOrd<T>* nizquierda);
 };

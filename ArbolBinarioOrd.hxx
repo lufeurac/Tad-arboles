@@ -2,7 +2,9 @@
 
 #ifndef ARBOLBINARIOORD_HXX_INCLUDED
 #define ARBOLBINARIOORD_HXX_INCLUDED
+
 #include <queue>
+
 using namespace std;
 
 template <class T>
@@ -60,7 +62,7 @@ bool ArbolBinarioOrd<T>::eliminar(T n)
         return false;
     else
     {
-        raiz->eliminar(n);
+        raiz->eliminarNodo(n);
     }
 }
 
