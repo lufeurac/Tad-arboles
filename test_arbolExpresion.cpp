@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
     ArbolExpresion<char> expresion;
+    ArbolExpresion<char> evaluar;
     //ifstream cin("in.txt");
     string linea;
     cout << "Ingrese la expresion" << endl;
@@ -21,13 +22,7 @@ int main()
     cout << endl;
     cout << "1. si es Expresion polaca" << endl;
     cout << "2. si es Expresion polaca inversa" << endl;
-    cout << "3. Pre Orden" << endl;
-    cout << "4. In-Orden" << endl;
-    cout << "5. Pos-Orden" << endl;
-    cout << "6. Nivel-Orden" << endl;
-    cout << "7. Limpiar arbol (No implementado)" << endl;
-    cout << "8. Resultado de la operacion:" << endl;
-    cout << "9. Salir" << endl;
+    cout << "3. Salir" << endl;
     cout << "Nota: si se selecciona una de las dos expresiones"<<endl;
     cout << " y se desea revisar una nueva toca reiniciar el programa" << endl<< endl;
     do
@@ -37,12 +32,46 @@ int main()
         {
         case 1:
         {
-
             cout << " La expresion es: " << l << endl;
             for(unsigned int i = 0 ; i<l.size() ; i++)
             {
                 expresion.insertarPre(l[i]);
             }
+            cout << endl;
+            cout <<"Pre-Orden"<< endl;
+            expresion.preOrden(expresion.obtenerRaiz());
+            cout << endl;
+            cout <<"in-Orden"<< endl;
+            expresion.inOrden(expresion.obtenerRaiz());
+            cout << endl;
+            cout <<"pos-Orden"<< endl;
+            expresion.posOrden(expresion.obtenerRaiz());
+            cout << endl;
+            cout <<"nivel-Orden"<< endl;
+            expresion.nivelOrden(expresion.obtenerRaiz());
+            cout << endl;
+            string  *ptrCad;
+            string  cadena;
+            ptrCad = &cadena;
+            expresion.posOrdenEval(expresion.obtenerRaiz(), ptrCad);
+            cout<<endl<<endl<<"Evaluar el pos-fijo de la expresion: "<<endl;
+            cout<<"posfijo = "<<cadena<<endl;
+            reverse(cadena.begin(),cadena.end());
+            for(unsigned int i = 0 ; i<cadena.size() ; i++)
+            {
+                evaluar.insertarPos(cadena[i]);
+            }
+            cout <<"Pre-Orden"<< endl;
+            expresion.preOrden(expresion.obtenerRaiz());
+            cout << endl;
+            cout <<"in-Orden"<< endl;
+            expresion.inOrden(expresion.obtenerRaiz());
+            cout << endl;
+            cout <<"pos-Orden"<< endl;
+            expresion.posOrden(expresion.obtenerRaiz());
+            cout << endl;
+            cout <<"nivel-Orden"<< endl;
+            expresion.nivelOrden(expresion.obtenerRaiz());
             cout << endl;
             break;
         }
@@ -50,45 +79,52 @@ int main()
         {
             cout << " La expresion es: " << l << endl;
             reverse(l.begin(),l.end());
+            // cout << " La expresion es: " << l<< endl;
             for(unsigned int i = 0; i<l.size() ; i++)
             {
+                //cout<<l[i]<<" ";
                 expresion.insertarPos(l[i]);
             }
             cout << endl;
-            break;
-        }
-        case 3:
             cout <<"Pre-Orden"<< endl;
             expresion.preOrden(expresion.obtenerRaiz());
             cout << endl;
-            break;
-        case 4:
             cout <<"in-Orden"<< endl;
             expresion.inOrden(expresion.obtenerRaiz());
             cout << endl;
-            break;
-        case 5:
             cout <<"pos-Orden"<< endl;
             expresion.posOrden(expresion.obtenerRaiz());
             cout << endl;
-            break;
-        case 6:
             cout <<"nivel-Orden"<< endl;
             expresion.nivelOrden(expresion.obtenerRaiz());
             cout << endl;
-            break;
-        case 8:
-            cout <<"respuesta"<< endl;
-            break;
-        case 7:
-            expresion.~ArbolExpresion();
-            ArbolExpresion<char> expresion;
+            string  *ptrCad;
+            string  cadena;
+            ptrCad = &cadena;
+            expresion.preOrdenEval(expresion.obtenerRaiz(), ptrCad);
+            //reverse(cadena.begin(),cadena.end());
+            cout<<endl<<endl<<"Evaluar el pre-fijo de la expresion: "<<endl;
+            cout<<"prefijo = "<<cadena<<endl;
+            for(unsigned int i = 0 ; i<cadena.size() ; i++)
+            {
+                evaluar.insertarPre(cadena[i]);
+            }
+            cout <<"Pre-Orden"<< endl;
+            evaluar.preOrden(evaluar.obtenerRaiz());
+            cout << endl;
+            cout <<"in-Orden"<< endl;
+            evaluar.inOrden(evaluar.obtenerRaiz());
+            cout << endl;
+            cout <<"pos-Orden"<< endl;
+            evaluar.posOrden(evaluar.obtenerRaiz());
+            cout << endl;
+            cout <<"nivel-Orden"<< endl;
+            evaluar.nivelOrden(evaluar.obtenerRaiz());
             cout << endl;
             break;
-
         }
-
+        }
     }
-    while(opc != 9);
+    while(opc != 3);
     return 0;
 }

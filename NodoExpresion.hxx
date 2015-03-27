@@ -243,7 +243,7 @@ bool NodoExpresion<T>::insertarNodoPre(NodoExpresion<T>* _dato)
 template <class T>
 bool NodoExpresion<T>::insertarNodoPos(NodoExpresion<T>* _dato)
 {
-   // cout<< _dato->getDato() <<" ";
+    // cout<< _dato->getDato() <<" ";
     bool aux;
     if(_dato->getBool())
     {
@@ -280,7 +280,22 @@ bool NodoExpresion<T>::insertarNodoPos(NodoExpresion<T>* _dato)
         }
         if(!aux)
         {
-            return izq->insertarNodoPos(_dato);
+            if(izq == NULL)
+            {
+                izq = _dato;
+                return true;
+            }
+            else
+            {
+                if(izq->getBool())
+                {
+                    aux = izq->insertarNodoPre(_dato);
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
         return aux;
     }

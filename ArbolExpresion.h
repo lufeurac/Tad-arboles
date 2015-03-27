@@ -25,6 +25,8 @@ public:
     void nivelOrden(NodoExpresion<T>* inicio);
     void posOrden(NodoExpresion<T>* inicio);
     void preOrden(NodoExpresion<T>* inicio);
+    void posOrdenEval(NodoExpresion<T>* inicio,string* s);
+    void preOrdenEval(NodoExpresion<T>* inicio,string* s);
     T obtenerDatoRaiz();
 };
 

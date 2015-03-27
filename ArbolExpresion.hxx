@@ -114,6 +114,17 @@ void ArbolExpresion<T>::preOrden(NodoExpresion<T>* inicio)
     }
 }
 
+template <class T>
+void ArbolExpresion<T>::preOrdenEval(NodoExpresion<T>* inicio,string* s)
+{
+    if(inicio != NULL)
+    {
+        *s= *s+ inicio->getDato();
+        preOrdenEval(inicio->getIzquierda(),s);
+        preOrdenEval(inicio->getDerecha(),s);
+    }
+}
+
 
 template <class T>
 void ArbolExpresion<T>::posOrden(NodoExpresion<T>* inicio)
@@ -125,6 +136,19 @@ void ArbolExpresion<T>::posOrden(NodoExpresion<T>* inicio)
         posOrden(inicio->getIzquierda());
         posOrden(inicio->getDerecha());
         cout << inicio->getDato();
+    }
+}
+
+template <class T>
+void ArbolExpresion<T>::posOrdenEval(NodoExpresion<T>* inicio,string *s)
+{
+    if(inicio == NULL)
+        return;
+    else
+    {
+        posOrdenEval(inicio->getIzquierda(),s);
+        posOrdenEval(inicio->getDerecha(),s);
+        *s= *s + inicio->getDato();
     }
 }
 
