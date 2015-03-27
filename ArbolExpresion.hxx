@@ -147,7 +147,7 @@ void ArbolExpresion<T>::nivelOrden(NodoExpresion<T>* inicio)
 }
 
 template <class T>
-bool ArbolExpresion<T>::insertar(T _dato)
+bool ArbolExpresion<T>::insertarPre(T _dato)
 {
     NodoExpresion<T>* nodo = new NodoExpresion<T>(_dato);
     //cout<< nodo->getBool() <<endl;
@@ -158,7 +158,23 @@ bool ArbolExpresion<T>::insertar(T _dato)
     }
     else
     {
-        return raiz->insertarNodo(nodo);
+        return raiz->insertarNodoPre(nodo);
+    }
+}
+
+template <class T>
+bool ArbolExpresion<T>::insertarPos(T _dato)
+{
+    NodoExpresion<T>* nodo = new NodoExpresion<T>(_dato);
+    //cout<< nodo->getBool() <<endl;
+    if(raiz == NULL)
+    {
+        raiz = nodo;
+        return true;
+    }
+    else
+    {
+        return raiz->insertarNodoPos(nodo);
     }
 }
 

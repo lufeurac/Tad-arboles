@@ -16,7 +16,8 @@ protected:
 public:
     bool buscar(T& n);
     bool eliminar(T _dato);
-    bool insertarNodo(NodoExpresion<T>* _dato);
+    bool insertarNodoPre(NodoExpresion<T>* _dato);
+    bool insertarNodoPos(NodoExpresion<T>* _dato);
     bool getBool();
     NodoExpresion();
     NodoExpresion(T& _dato);

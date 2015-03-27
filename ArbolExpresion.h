@@ -14,7 +14,8 @@ public:
     ArbolExpresion();
     ~ArbolExpresion();
     bool esVacio();
-    bool insertar(T dato);
+    bool insertarPre(T dato);
+    bool insertarPos(T dato);
     int altura();
     int alturaM(NodoExpresion<T>* inicio);
     int tamano(NodoExpresion<T>* inicio);
