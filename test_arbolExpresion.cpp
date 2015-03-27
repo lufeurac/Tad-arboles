@@ -26,8 +26,7 @@ int main()
                     cout << " La expresion es: " << linea << endl;
                     for(int i = 0 ; i < linea.size() ; i++)
                     {
-                        cout << expresion.insertar(linea[i]) <<  " ";
-
+                        expresion.insertar(linea[i]);
                     }
                     cout << endl;
                     break;

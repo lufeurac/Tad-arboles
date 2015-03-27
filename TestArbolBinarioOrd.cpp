@@ -9,18 +9,13 @@ void pereza()
 
 int main()
 {
-    ArbolBinarioOrd<int> arbol(10);
-    if(arbol.insertar(4))
+    ArbolBinarioOrd<int> arbol(12);
+    if(arbol.insertar(6))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(7))
-        cout << "Se inserto el nodo correctamente" << endl;
-    else
-        cout << "No se inserto el nodo" << endl;
-
-    if(arbol.insertar(3))
+    if(arbol.insertar(14))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
@@ -30,20 +25,65 @@ int main()
     else
         cout << "No se inserto el nodo" << endl;
 
-    if(arbol.insertar(5))
+    if(arbol.insertar(13))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
+    if(arbol.insertar(8))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+
+    if(arbol.insertar(19))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+    if(arbol.insertar(5))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+    if(arbol.insertar(1))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
     if(arbol.insertar(11))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+    if(arbol.insertar(21))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+            if(arbol.insertar(10))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+            if(arbol.insertar(7))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+            if(arbol.insertar(3))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+            if(arbol.insertar(15))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+            if(arbol.insertar(17))
+        cout << "Se inserto el nodo correctamente" << endl;
+    else
+        cout << "No se inserto el nodo" << endl;
+            if(arbol.insertar(20))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
 
     pereza();
-   cout << "Raiz del arbol: " << arbol.obtenerDatoRaiz() << endl;
-   /* cout << "La altura del arbol es: " << arbol.altura() << endl;
-    cout << "El tamanio del arbol es: " << arbol.tamano(arbol.obtenerRaiz()) << endl;*/
+    cout << "Raiz del arbol: " << arbol.obtenerDatoRaiz() << endl;
+    /* cout << "La altura del arbol es: " << arbol.altura() << endl;
+     cout << "El tamanio del arbol es: " << arbol.tamano(arbol.obtenerRaiz()) << endl;*/
     cout << "El arbol ordenado por pre-orden es el siguiente: ";
     arbol.preOrden(arbol.obtenerRaiz());
     cout << endl;
@@ -57,14 +97,14 @@ int main()
     arbol.nivelOrden(arbol.obtenerRaiz());
     cout << endl;
 
-    if(arbol.eliminar(7))
+    if(arbol.eliminar(12))
         cout << "Se inserto el nodo correctamente" << endl;
     else
         cout << "No se inserto el nodo" << endl;
     cout << "El arbol ordenado por pre-orden es el siguiente: ";
     arbol.preOrden(arbol.obtenerRaiz());
     cout << endl;
-        cout << "El arbol ordenado por in-orden es el siguiente: ";
+    cout << "El arbol ordenado por in-orden es el siguiente: ";
     arbol.inOrden(arbol.obtenerRaiz());
     cout << endl;
     cout << "El arbol ordenado por pos-orden es el siguiente: ";

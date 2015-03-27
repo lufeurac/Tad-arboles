@@ -122,7 +122,7 @@ bool NodoBinarioOrd<T>::insertarNodo(T _dato)
             }
             else
             {
-                bool res =izq->insertarNodo(_dato);
+                bool res = izq->insertarNodo(_dato);
                 return res;
             }
         }
@@ -131,13 +131,29 @@ bool NodoBinarioOrd<T>::insertarNodo(T _dato)
     {
         if((_dato < dato)&&(izq != NULL))
         {
-            bool res = izq->insertarNodo(_dato);
-            return res;
+            if((izq->getDato()) > _dato)
+            {
+                bool res = izq->insertarNodo(_dato);
+                return res;
+            }
+            else
+            {
+                der = new NodoBinarioOrd<T>(_dato);
+                return true;
+            }
         }
         if((_dato > dato)&&(der != NULL))
         {
-            bool res = der->insertarNodo(_dato);
-            return res;
+            if((der->getDato()) < _dato)
+            {
+                bool res = der->insertarNodo(_dato);
+                return res;
+            }
+            else
+            {
+                izq = new NodoBinarioOrd<T>(_dato);
+                return true;
+            }
         }
         if((_dato < dato)&&(izq == NULL))
         {
@@ -158,6 +174,7 @@ bool NodoBinarioOrd<T>::eliminarNodo(T _dato)
 {
     if(buscar(_dato))
     {
+
         if(dato == _dato)
         {
             if((izq != NULL)&&(der != NULL))
@@ -190,7 +207,7 @@ bool NodoBinarioOrd<T>::eliminarNodo(T _dato)
             }
             if((izq == NULL)&&(der == NULL))
             {
-                delete this;
+                this->~NodoBinarioOrd();
                 return true;
             }
         }
@@ -224,17 +241,17 @@ bool NodoBinarioOrd<T>::rotaciones(NodoBinarioOrd<T>* dato, NodoBinarioOrd<T>* n
         NodoBinarioOrd<T>* temp1;
         if((nod->getDerecha() != NULL) && (nod->getIzquierda() != NULL))
         {
-               temp1=nod->getDerecha();
-               nod->setDerecha(dato);
-               nod = nod->getIzquierda();
-               return rotaciones(temp1,nod);
+            temp1=nod->getDerecha();
+            nod->setDerecha(dato);
+            nod = nod->getIzquierda();
+            return rotaciones(temp1,nod);
         }
         else
         {
             if((nod->getDerecha() == NULL) && (nod->getIzquierda() != NULL))
             {
-                  nod->setDerecha(dato);
-                  return true;
+                nod->setDerecha(dato);
+                return true;
             }
         }
     }

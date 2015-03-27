@@ -19,7 +19,7 @@ template <class T>
 NodoExpresion<T>::NodoExpresion(T& _dato)
 {
     dato = _dato;
-    if((_dato == '*')||(_dato == '+')||(_dato == '-')||(_dato == '/'))
+    if((_dato == '*')||(_dato == '+')||(_dato == '-')||(_dato == '/')||(_dato == '%')||(_dato == '^'))
     {
         isOpe = true;
     }
@@ -50,7 +50,7 @@ template <class T>
 void NodoExpresion<T>::setDato(T& val)
 {
     dato = val;
-    if((val == '*')||(val == '+')||(val == '-')||(val != '/'))
+    if((val == '*')||(val == '+')||(val == '-')||(val != '/')||(val == '%')||(val == '^'))
     {
         isOpe = true;
     }
@@ -124,72 +124,82 @@ bool NodoExpresion<T>::buscar(T& n)
 template <class T>
 bool NodoExpresion<T>::insertarNodo(NodoExpresion<T>* _dato)
 {
-    if(_dato->getBool())
+    //+-+78/4*291
+    if(_dato->getBool())//-+
     {
-        if (izq == NULL)
+        if (izq == NULL)//-
         {
-            izq = _dato;
+            izq = _dato;//-+
             return true;
         }
         else
         {
             if(!izq->getBool())
-                return false;
-            else
             {
-                cout << dato << endl ;
-                bool aux = izq->insertarNodo(_dato);
-                if(!aux)
-                {
-                    if(der == NULL)
-                    {
-                        der = _dato;
-                        return true;
-                    }
-                    else if(!der->getBool())
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return der->insertarNodo(_dato);
-                    }
-                }
-                return aux;
+                return false;
             }
+            bool aux = izq->insertarNodo(_dato);
+            if(!aux)
+            {
+                if(der == NULL)
+                {
+                    der = _dato;
+                    return true;
+                }
+                else if(!der->getBool())
+                {
+                    return false;
+                }
+                else
+                {
+                    return der->insertarNodo(_dato);
+                }
+            }
+            return aux;
         }
     }
     else
     {
+        bool aux;
         if(izq == NULL)
         {
+            //cout<<"yay";
             izq = _dato;
             return true;
         }
-
-        bool aux = true;
-        if(izq->getBool())
-        {
-            aux = izq->insertarNodo(_dato);
-        }
         else
         {
-            return false;
-        }
-
-        if(!aux)
-        {
-            if(der == NULL)
+            if(izq->getBool())
             {
-                der = _dato;
-                return true;
+               // cout<<dato;
+                aux = izq->insertarNodo(_dato);
             }
-            if(der->getBool())
-                aux = der->insertarNodo(_dato);
             else
-                return false;
-        }
+            {
+                if(der == NULL)
+                {
+                  //  cout<<"yay";
+                    der = _dato;
+                    return true;
+                }
+                else
+                {
 
+                    if(der->getBool())
+                    {
+                        aux = der->insertarNodo(_dato);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            if(!aux)
+            {
+                return der->insertarNodo(_dato);;
+            }
+        }
         return aux;
     }
 }

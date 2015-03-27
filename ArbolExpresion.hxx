@@ -150,6 +150,7 @@ template <class T>
 bool ArbolExpresion<T>::insertar(T _dato)
 {
     NodoExpresion<T>* nodo = new NodoExpresion<T>(_dato);
+    //cout<< nodo->getBool() <<endl;
     if(raiz == NULL)
     {
         raiz = nodo;

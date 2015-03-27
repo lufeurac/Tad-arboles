@@ -131,7 +131,11 @@ void ArbolBinarioOrd<T>::inOrden(NodoBinarioOrd<T>* inicio)
 template <class T>
 void ArbolBinarioOrd<T>::preOrden(NodoBinarioOrd<T>* inicio)
 {
-    if(inicio != NULL)
+    if(inicio == NULL)
+    {
+        return;
+    }
+    else
     {
         cout << inicio->getDato() << " ";
         preOrden(inicio->getIzquierda());
